@@ -1,3 +1,7 @@
-<h2>Feed</h2>
-
-{{outlet}}
+<div class='row'>
+  <div class='col-xs-8 col-xs-offset-2'>
+    {{#each model as |tweet|}}
+      {{inline-tweet tweet=tweet}}
+    {{/each}}
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class='well row'>
+  <div class='col-xs-2'>
+    <img src={{tweet.author.avatar_url}} class='img-rounded' style="width: 100%" />
+  </div>
+  <div class='col-xs-10'>
+    <strong>{{tweet.author.name}}</strong>
+    <span class='text-muted'>{{tweet.author.handle}} · {{moment-from-now tweet.created_at}}</span>
+    <br>
+    <p>{{tweet.text}}</p>
+    {{#if tweet.image_url }}
+      <img src={{tweet.image_url}} class='img-rounded' style="width: 100%" />
+    {{/if}}
+  </div>
+</div>
