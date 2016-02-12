@@ -1,14 +1,24 @@
-<div class='well row'>
-  <div class='col-xs-2'>
-    <img src={{tweet.author.avatar_url}} class='img-rounded' style="width: 100%" />
-  </div>
-  <div class='col-xs-10'>
-    <strong>{{tweet.author.name}}</strong>
-    <span class='text-muted'>{{tweet.author.handle}} · {{moment-from-now tweet.created_at}}</span>
-    <br>
-    <p>{{tweet.text}}</p>
-    {{#if tweet.image_url }}
-      <img src={{tweet.image_url}} class='img-rounded' style="width: 100%" />
-    {{/if}}
+<div class='well'>
+  {{#if tweet.shared_by}}
+    <div class='row'>
+      <div class='col-xs-10 col-xs-offset-2 text-muted' style='padding-bottom: 10px; margin-top: -8px;'>
+        {{fa-icon 'retweet' class='text-success'}}
+        {{tweet.shared_by.name}} Retweeted
+      </div>
+    </div>
+  {{/if}}
+  <div class='row'>
+    <div class='col-xs-2'>
+      <img src={{tweet.author.avatar_url}} class='img-rounded' style="width: 100%" />
+    </div>
+    <div class='col-xs-10'>
+      <strong>{{tweet.author.name}}</strong>
+      <span class='text-muted'>{{tweet.author.handle}} · {{moment-from-now tweet.created_at}}</span>
+      <br>
+      <p>{{tweet.text}}</p>
+      {{#if tweet.image_url}}
+        <img src={{tweet.image_url}} class='img-rounded' style="width: 100%" />
+      {{/if}}
+    </div>
   </div>
 </div>
