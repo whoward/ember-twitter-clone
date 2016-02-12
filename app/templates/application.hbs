@@ -1,3 +1,27 @@
-<h2 id="title">Welcome to Ember</h2>
-
-{{outlet}}
+<div class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Twitter</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navigation-collapse">
+      <ul class="nav navbar-nav">
+        {{#link-to 'feed' tagName='li'}}
+          <a href='#'>Feed</a>
+        {{/link-to}}
+        {{#link-to 'my_tweets' tagName='li'}}
+          <a href='#'>My Tweets</a>
+        {{/link-to}}
+      </ul>
+    </div>
+  </div>
+</div>
+<div class='container-fluid'>
+  {{outlet}}
+</div>
