@@ -1,9 +1,9 @@
 <div class='well'>
-  {{#if tweet.shared_by}}
+  {{#if tweet.sharedBy}}
     <div class='row'>
       <div class='col-xs-10 col-xs-offset-2 text-muted' style='padding-bottom: 10px; margin-top: -8px;'>
         {{fa-icon 'retweet' class='text-success'}}
-        {{link-to tweet.shared_by.name 'user' tweet.shared_by.handle}} Retweeted
+        {{link-to tweet.sharedBy.name 'user' tweet.sharedBy.handle}} Retweeted
       </div>
     </div>
   {{/if}}
