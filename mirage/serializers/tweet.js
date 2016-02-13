@@ -6,26 +6,31 @@ export default ApplicationSerializer.extend({
   serialize(object, request) {
     let json = serialize.apply(this, arguments);
     
+    json.included = [];
+    
     for(let i = 0; i < json.data.length; i++) {
       let record = object[i];
       let serialized = json.data[i];
       
       let author = record._schema.user.find(record.authorId);
-      let serializedAuthor = serialize.apply(this, [author]).data;
+      
+      json.included.push(serialize.apply(this, [author]).data);
       
       serialized.relationships = {
-        author: {data: serializedAuthor}
+        author: {data: {type: 'users', id: record.authorId}}
       };
       
       if(record.sharedById) {
         let sharedBy = record._schema.user.find(record.sharedById);
         
         serialized.relationships['shared-by'] = {
-          data: serialize.apply(this, [sharedBy]).data
-        }
+          data: {type: 'users', id: record.sharedById}
+        };
+        
+        json.included.push(serialize.apply(this, [sharedBy]).data);
       }
     }
     
     return json;
   }
-})
+});
