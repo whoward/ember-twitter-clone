@@ -1,6 +1,12 @@
 
 export default [
   {
+    id: 0,
+    name: 'William Howard',
+    handle: 'w_howard',
+    avatar_url: 'https://pbs.twimg.com/profile_images/1536584367/IMG_20110909_221301_400x400.jpg'
+  },
+  {
     id: 1,
     name: 'DHH',
     handle: 'dhh',
