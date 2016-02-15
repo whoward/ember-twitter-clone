@@ -1,1 +1,15 @@
-<h2>@{{ model }}</h2>
+<div class='row'>
+  <div class='col-xs-4'>
+    <div class='well'>
+      <img src={{model.user.avatar_url}} style="width: 100%" class='img-thumbnail'/>
+      <br>
+      <h4>{{model.user.name}}</h4>
+      <div class='text-muted'>@{{model.user.handle}}</div>
+    </div>
+  </div>
+  <div class='col-xs-8'>
+    {{#each model.tweets as |tweet|}}
+      {{inline-tweet tweet=tweet}}
+    {{/each}}
+  </div>
+</div>
