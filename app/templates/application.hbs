@@ -12,14 +12,10 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation-collapse">
       <ul class="nav navbar-nav">
-        {{#link-to 'index' tagName='li'}}
-          <a href='#'>Feed</a>
-        {{/link-to}}
-        {{#link-to 'user' currentUser.handle tagName='li'}}
-          <a href='#'>My Tweets</a>
-        {{/link-to}}
+        {{#menu-item 'index'}}Feed{{/menu-item}}
+        {{#menu-item 'user' currentUser.handle}}My Tweets{{/menu-item}}
         {{#link-to 'login' tagName='li'}}
-          <a {{action 'invalidateSession'}}>Logout</a>
+          <a href='' {{action 'invalidateSession'}}>Logout</a>
         {{/link-to}}
       </ul>
     </div>
