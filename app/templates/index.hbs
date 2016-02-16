@@ -1,5 +1,8 @@
 <div class='row'>
-  <div class='col-xs-6 col-xs-offset-3'>
+  <div class='col-xs-3'>
+    {{profile-view user=currentUser}}
+  </div>
+  <div class='col-xs-6'>
     {{#each model as |tweet|}}
       {{inline-tweet tweet=tweet}}
     {{/each}}
