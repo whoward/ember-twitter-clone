@@ -1,10 +1,31 @@
-<form {{action 'authenticate' on='submit'}}>
-  <label for="identification">Login</label>
-  {{input id='identification' placeholder='Enter Login' value=identification}}
-  <label for="password">Password</label>
-  {{input id='password' placeholder='Enter Password' type='password' value=password}}
-  <button type="submit">Login</button>
-  {{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-  {{/if}}
-</form>
+<div class='row' style='min-height: 100%; min-height: 100vh; display: flex; align-items: center;'>
+  <div class='well col-xs-12 col-sm-10 col-md-8 col-lg-6 col-sm-offset-1 col-md-offset-2 col-lg-offset-3'>
+    <div class='text-center' style='margin: 15px 0 35px 0;'>
+      <img src='/assets/images/logo.svg' height='50'/>
+    </div>
+    {{#if errorMessage}}
+      <p>{{errorMessage}}</p>
+    {{/if}}
+    <form class='form-horizontal' {{action 'authenticate' on='submit'}}>
+      <div class='form-group'>
+        <label for="identification" class='col-sm-2 control-label'>Username</label>
+        <div class='col-sm-10'>
+          {{input id='identification' placeholder='Enter Username' classNames='form-control' value=identification}}
+        </div>
+      </div>
+      
+      <div class='form-group'>
+        <label for="password" class='col-sm-2 control-label'>Password</label>
+        <div class='col-sm-10'>
+          {{input id='password' placeholder='Enter Password' type='password' classNames='form-control col-sm-10' value=password}}
+        </div>
+      </div>
+  
+      <div class='form-group'>
+        <div class='col-sm-offset-2 col-sm-10'>
+          <button type="submit" class='btn btn-default'>Login</button>`
+        </div>
+      </div>
+    </form>  
+  </div>
+</div>
