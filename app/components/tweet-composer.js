@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: ['tweet-composer', 'well'],
+  
   store: Ember.inject.service(),
   
   user: null,

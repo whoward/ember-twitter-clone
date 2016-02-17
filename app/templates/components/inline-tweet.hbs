@@ -1,40 +1,36 @@
-<div class='well'>
-  {{#if tweet.sharedBy}}
-    <div class='row'>
-      <div class='col-xs-10 col-xs-offset-2 text-muted' style='padding-bottom: 10px; margin-top: -8px;'>
-        {{fa-icon 'retweet' class='text-success'}}
-        {{link-to tweet.sharedBy.name 'user' tweet.sharedBy.handle}} Retweeted
+{{#if tweet.sharedBy}}
+  <div class='row'>
+    <div class='col-xs-10 col-xs-offset-2 text-muted' style='padding-bottom: 10px; margin-top: -8px;'>
+      {{fa-icon 'retweet' class='text-success'}}
+      {{link-to tweet.sharedBy.name 'user' tweet.sharedBy.handle}} Retweeted
+    </div>
+  </div>
+{{/if}}
+<div class='row'>
+  <div class='col-xs-2'>
+    <img src={{tweet.author.avatar_url}} class='img-rounded' style="width: 100%" />
+  </div>
+  <div class='col-xs-10'>
+    <strong>{{link-to tweet.author.name 'user' tweet.author.handle}}</strong>
+    <span class='text-muted'>@{{tweet.author.handle}} · {{moment-from-now tweet.created_at}}</span>
+    <br>
+    <p>{{tweet.text}}</p>
+    {{#if tweet.image-url}}
+      <img src={{tweet.image-url}} class='img-rounded' style="width: 100%" />
+    {{/if}}
+    
+    <div class='row actions'>
+      {{#if reply}}
+        <div class='col-xs-2 text-muted'>
+          {{fa-icon 'reply' click=(action 'userClickedReply')}}
+        </div>
+      {{/if}}
+      <div class='col-xs-2 text-muted'>
+        {{fa-icon 'retweet'}} {{ tweet.retweets }}
+      </div>
+      <div class='col-xs-2 text-muted'>
+        {{fa-icon 'heart'}} {{ tweet.likes }}
       </div>
     </div>
-  {{/if}}
-  <div class='row'>
-    <div class='col-xs-2'>
-      <img src={{tweet.author.avatar_url}} class='img-rounded' style="width: 100%" />
-    </div>
-    <div class='col-xs-10'>
-      <strong>{{link-to tweet.author.name 'user' tweet.author.handle}}</strong>
-      <span class='text-muted'>@{{tweet.author.handle}} · {{moment-from-now tweet.created_at}}</span>
-      <br>
-      <p>{{tweet.text}}</p>
-      {{#if tweet.image-url}}
-        <img src={{tweet.image-url}} class='img-rounded' style="width: 100%" />
-      {{/if}}
-    </div>
   </div>
-  <div class='row'>
-    <div class='col-xs-2'>&nbsp;</div>
-    <div class='col-xs-2 text-muted'>
-      {{fa-icon 'reply' click=(action 'userClickedReply')}}
-    </div>
-    <div class='col-xs-2 text-muted'>
-      {{fa-icon 'retweet'}} {{ tweet.retweets }}
-    </div>
-    <div class='col-xs-2 text-muted'>
-      {{fa-icon 'heart'}} {{ tweet.likes }}
-    </div>
-    <div class='col-xs-2 text-muted'>
-      {{fa-icon 'ellipsis-h'}}
-    </div>
-  </div>
-  
 </div>
