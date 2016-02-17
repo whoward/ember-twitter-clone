@@ -1,4 +1,5 @@
 import Mirage from 'ember-cli-mirage';
+import moment from 'moment';
 
 export default function() {
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
@@ -30,6 +31,10 @@ export default function() {
     return object;
   };
   
+  let invalidClient = function() {
+    return new Mirage.Response(400, {}, {error: 'invalid_client'});
+  }
+  
   this.post('/token', function(schema, request) {
     let params = parseWWWEncodedParams(request.requestBody);
     let user = findUserByHandle(schema, params.username);
@@ -42,7 +47,7 @@ export default function() {
         refresh_token: user.id
       };
     } else {
-      return new Mirage.Response(400, {}, {error: 'invalid_client'});
+      return invalidClient();
     }
   });
 
@@ -55,6 +60,28 @@ export default function() {
     }
   });
   
+  this.post('/tweets', function(schema, request) {
+    let params = JSON.parse(request.requestBody).data.attributes;
+    let currentUser = findCurrentUser(schema, request);
+    
+    if(!currentUser) {
+      return invalidClient();
+    }
+    
+    let id = Math.max(...schema.tweet.all().map(function(x) { return x.id })) + 1;
+    
+    let record = schema.tweet.create({
+      id: id,
+      text: params.text,
+      created_at: moment(),
+      authorId: currentUser.id,
+      retweets: 0,
+      likes: 0
+    });
+    
+    return record;
+  });
+  
   this.get('/users/:handle', function(schema, request) {
     return findUserByHandle(schema, request.params.handle);
   });
@@ -63,9 +90,9 @@ export default function() {
     let currentUser = findCurrentUser(schema, request);
     
     if(currentUser) {
-      return currentUser; 
+      return currentUser;
     } else {
-      return new Mirage.Response(400, {}, {error: 'invalid_client'});
+      return invalidClient();
     }
   });
 }

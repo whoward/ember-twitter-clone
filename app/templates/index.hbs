@@ -3,6 +3,7 @@
     {{profile-view user=currentUser}}
   </div>
   <div class='col-xs-12 col-sm-8 col-md-6 col-lg-8'>
+    {{tweet-composer user=currentUser}}
     {{#each model as |tweet|}}
       {{inline-tweet tweet=tweet}}
     {{/each}}
