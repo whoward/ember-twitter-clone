@@ -3,9 +3,9 @@
     {{profile-view user=currentUser}}
   </div>
   <div class='col-xs-12 col-sm-8 col-md-6 col-lg-8'>
-    {{tweet-composer user=currentUser}}
+    {{tweet-composer user=currentUser text=newTweetText}}
     {{#each sortedList as |tweet|}}
-      {{inline-tweet tweet=tweet}}
+      {{inline-tweet tweet=tweet onReply=(action 'userClickedReply')}}
     {{/each}}
   </div>
 </div>
