@@ -29,7 +29,12 @@ export default Ember.Component.extend({
   
   actions: {
     submit() {
-      this.get('store').createRecord('tweet', {text: this.get('text')}).save();
+      let record = this.get('store').createRecord('tweet', {
+        text: this.get('text'),
+        created_at: new Date()
+      });
+      
+      record.save();
     }
   }
 });
