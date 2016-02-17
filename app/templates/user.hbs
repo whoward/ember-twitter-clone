@@ -3,7 +3,7 @@
     {{profile-view user=model.user}}
   </div>
   <div class='col-xs-12 col-sm-8 col-md-6 col-lg-8'>
-    {{#each model.tweets as |tweet|}}
+    {{#each sortedTweets as |tweet|}}
       {{inline-tweet tweet=tweet}}
     {{/each}}
   </div>
