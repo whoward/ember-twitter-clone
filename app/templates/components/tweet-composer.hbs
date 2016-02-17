@@ -4,7 +4,7 @@
       <img src={{user.avatar_url}} style="width: 35px; margin-top: 10px;" class='img-rounded'/>
     </div>
     <div class='col-xs-11'>
-      {{textarea valueBinding='text' placeholder="What's happening?" class='form-control'}}
+      {{textarea valueBinding='text' placeholder="What's happening?" class='form-control' enter='submit'}}
       <div class='text-right' style='margin-top: 10px;'>
         <span class={{remainingCounterClass}} style='padding-right: 10px'>{{remainingCounter}}</span>
         <button class='btn btn-primary' disabled={{submitDisabled}} {{action 'submit'}}>

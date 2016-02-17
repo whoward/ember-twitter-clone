@@ -29,10 +29,16 @@ export default Ember.Component.extend({
   
   actions: {
     submit() {
+      if(this.get('submitDisabled')) {
+        return;
+      }
+      
       let record = this.get('store').createRecord('tweet', {
         text: this.get('text'),
         created_at: new Date()
       });
+      
+      this.set('text', '');
       
       record.save();
     }
