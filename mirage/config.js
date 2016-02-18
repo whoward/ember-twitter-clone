@@ -55,6 +55,8 @@ export default function() {
     if(request.queryParams.user) {
       let user = findUserByHandle(schema, request.queryParams.user);
       return schema.tweet.where({authorId: user.id});
+    } else if(request.queryParams.hashtag) {
+      return schema.tweet.all().filter(function(x) { return x.text.includes(`#${request.queryParams.hashtag}`); });
     } else {
       return schema.tweet.all();
     }

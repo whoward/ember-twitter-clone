@@ -1,0 +1,10 @@
+<div class='row'>
+  <div class='hidden-xs col-sm-4 col-md-3 col-lg-2'>
+    <h3>#{{model.tag}}</h3>
+  </div>
+  <div class='col-xs-12 col-sm-8 col-md-6 col-lg-8'>
+    {{#each sortedTweets as |tweet|}}
+      {{inline-tweet tweet=tweet reply=false}}
+    {{/each}}
+  </div>
+</div>
