@@ -16,7 +16,7 @@ export default [
     id: 2,
     name: 'Sunil Karkera',
     handle: 'gluecode',
-    avatar_url: 'https://pbs.twimg.com/profile_images/677233787709722624/mjxu4PAQ_bigger.jpg'
+    avatar_url: 'https://pbs.twimg.com/profile_images/699366356177715200/6hETUlHs_400x400.jpg'
   },
   {
     id: 3,

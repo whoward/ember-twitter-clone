@@ -14,7 +14,7 @@
     <strong>{{link-to tweet.author.name 'user' tweet.author.handle}}</strong>
     <span class='text-muted'>@{{tweet.author.handle}} · {{moment-from-now tweet.created_at}}</span>
     <br>
-    <p>{{tweet.text}}</p>
+    <p>{{autolink tweet.text}}</p>
     {{#if tweet.image-url}}
       <img src={{tweet.image-url}} class='img-rounded' style="width: 100%" />
     {{/if}}
