@@ -58,3 +58,9 @@ test("it doesn't replace hashtags that are preceeded by letters", function(asser
   let actual = subject('foo#hash');
   assert.equal(actual, expected);
 });
+
+test('it automatically links urls', function(assert) {
+  let expected = ' <a href="http://www.google.ca/" target="_blank">http://www.google.ca/</a> ';
+  let actual = subject('http://www.google.ca/');
+  assert.equal(actual, expected);
+});

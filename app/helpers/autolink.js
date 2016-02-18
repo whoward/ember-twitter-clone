@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import linkify from 'ember-linkify/helpers/linkify';
 
 export function autolink([text]) {
-  text = Ember.Handlebars.Utils.escapeExpression(text);
+  text = linkify.compute([text], '_blank').toString();
   
   text = text.replace(/(\s)(@\w+)/g, function(match, pre, handle) {
     return `${pre}<a href="/${handle.slice(1)}">${handle}</a>`;
