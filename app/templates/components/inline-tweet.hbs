@@ -8,11 +8,11 @@
 {{/if}}
 <div class='row'>
   <div class='col-xs-2'>
-    <img src={{tweet.author.avatar_url}} class='img-rounded' style="width: 100%" />
+    <img src={{tweet.author.avatar-url}} class='img-rounded' style="width: 100%" />
   </div>
   <div class='col-xs-10'>
     <strong>{{link-to tweet.author.name 'user' tweet.author.handle}}</strong>
-    <span class='text-muted'>@{{tweet.author.handle}} · {{moment-from-now tweet.created_at}}</span>
+    <span class='text-muted'>@{{tweet.author.handle}} · {{moment-from-now tweet.created-at}}</span>
     <br>
     <p>{{autolink tweet.text}}</p>
     {{#if tweet.image-url}}

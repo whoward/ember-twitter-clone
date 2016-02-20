@@ -37,7 +37,7 @@ export default Ember.Component.extend({
       
       let record = this.get('store').createRecord('tweet', {
         text: this.get('text'),
-        created_at: new Date()
+        'created-at': new Date()
       });
       
       this.set('text', '');
