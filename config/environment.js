@@ -16,16 +16,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    },
-    
-    contentSecurityPolicyHeader: 'Content-Security-Policy',
-    contentSecurityPolicy: {
-      // ... other stuff here
-      'font-src': "'self' http://some-domain:4200",
-    },
+    }
   };
 
   if (environment === 'development') {
+    ENV.apiHost = 'https://ember-twitter-whoward.c9users.io:8082';
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -43,6 +38,10 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+  }
+  
+  if(environment === 'production') {
+    ENV.apiHost = 'http://whoward-ember-twitter-rails.herokuapp.com';
   }
 
   return ENV;

@@ -1,10 +1,11 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
+import ENV from 'ember-twitter/config/environment';
 
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   authorizer: 'authorizer:oauth2',
-  host: 'https://ember-twitter-whoward.c9users.io:8082',
+  host: ENV.apiHost,
   
   // allows the multiword paths in urls to be underscored
   pathForType: function(type) {
