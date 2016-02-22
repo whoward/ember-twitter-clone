@@ -12,7 +12,7 @@ let linkInternal = function(text, pattern, urlGenerator) {
   });
   
   // replace pattern matches in the middle of the string preceeded by a whitespace 
-  text = text.replace(new RegExp(`(\\s+)(${pattern})`), function(string, pre, match) {
+  text = text.replace(new RegExp(`(\\s+)(${pattern})`, 'g'), function(string, pre, match) {
     return `${pre}<a href="${urlGenerator(match)}">${match}</a>`;
   });
   
