@@ -1,11 +1,11 @@
-import { autolink } from '../../../helpers/autolink';
+import { AutolinkedText } from '../../../components/autolinked-text';
 import { module, test } from 'qunit';
 import Ember from 'ember';
 
-module('Unit | Helper | autolink');
+module('Unit | Component | autolink');
 
 let subject = function(input) {
-  return autolink([input]).toString();
+  return AutolinkedText.create({text: input}).get('linkedText');
 };
 
 test('it return an unedited string when there is nothing special to do', function(assert) {
@@ -13,7 +13,7 @@ test('it return an unedited string when there is nothing special to do', functio
 });
 
 test('it is HTML safe', function(assert) {
-  assert.ok(autolink(['ok']) instanceof Ember.Handlebars.SafeString);
+  assert.ok(subject('ok') instanceof Ember.Handlebars.SafeString);
 });
 
 test('it escapes html from the text', function(assert) {
